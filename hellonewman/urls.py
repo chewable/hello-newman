@@ -33,7 +33,6 @@ urlpatterns = patterns('',
         view = 'hellonewman.blog.views.home_page',
         name = "home-page"),
 
-    (r'^contact/', include('contact_form.urls')),
     (r'^admin/jsi18n/$', 'django.views.i18n.javascript_catalog'),
     (r'^admin/', include(admin.site.urls)),
 #    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
