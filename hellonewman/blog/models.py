@@ -103,10 +103,6 @@ class Entry(models.Model):
             'slug': self.slug
         })
 
-    def save(self, *args, **kwargs):
-        self.updated_on = datetime.now()
-        super(Entry, self).save()
-
     def is_published(self):
         return self.published
 
