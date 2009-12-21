@@ -122,7 +122,7 @@ COMPRESS_VERSION = True
 #CSSTIDY_BINARY = '/usr/local/bin/csstidy'
 COMPRESS_CSS = {
     'screen': {
-        'source_filenames': ('stylesheets/reset.css', 'stylesheets/screen.css'),
+        'source_filenames': ('css/reset.css', 'css/screen.css'),
         'output_filename': 'c/screen.r?.css',
         'extra_context': { 'media': 'screen,projection' }
     },
