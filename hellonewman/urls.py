@@ -12,7 +12,7 @@ admin.autodiscover()
     
 urlpatterns = patterns('',
     url(r'^$', direct_to_template, { 'template': 'landing.html'}),
-    (r'^blog/', include('blog.urls')),
+    (r'^journal/', include('blog.urls')),
     (r'^grappelli/', include('grappelli.urls')),
     (r'^admin/jsi18n/$', 'django.views.i18n.javascript_catalog'),
     (r'^admin/', include(admin.site.urls)),
