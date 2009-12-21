@@ -90,6 +90,7 @@ INSTALLED_APPS = (
 
     # Third Party
     'grappelli',
+    'compressor',
     'syncr.flickr',
     'syncr.twitter',
     'syncr.readernaut',

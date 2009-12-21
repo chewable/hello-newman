@@ -1,0 +1,18 @@
+{% load compress %}
+<!DOCTYPE html>
+<html class="{% block html-class %}base{% endblock %}" dir="ltr" lang="en">
+<head>
+<meta charset="utf-8">
+<title>{% block title %}Greg Newman{% endblock %}</title>
+<link rel="icon" type="image/png" href="{{ MEDIA_URL }}images/icon_favicon.png" />
+{% block extra-head %}{% endblock %}{% compress css %}
+<link rel="stylesheet" href="{{ MEDIA_URL }}stylesheets/reset.css" media="screen" />
+<link rel="stylesheet" href="{{ MEDIA_URL }}stylesheets/landing.css" media="screen" />
+{% block extra-css %}{% endblock %}{% endcompress %}
+</head>
+<body id="gregnewman-com" class="{% block body-class %}base{% endblock %}">
+{% block body %}{% endblock %}
+
+{% block inline-js %}{% endblock %}
+</body>
+</html>
