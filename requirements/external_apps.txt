@@ -18,5 +18,4 @@ django-markup==0.1
 -e git+git://github.com/ericflo/django-oembed.git#egg=django-oembed
 -e git+git://github.com/arthurk/django-disqus.git#egg=disqus
 -e svn+http://django-syncr.googlecode.com/svn/trunk/#egg=django-syncr
--e svn+http://django-contact-form.googlecode.com/svn/trunk/#egg=contact_form
 -e git+git://github.com/gregnewman/django-grappelli.git#egg=django-grappelli
