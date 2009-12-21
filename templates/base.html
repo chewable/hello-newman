@@ -1,0 +1,23 @@
+{% load disqus_tags %}
+{% load flickr %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block page_title %}Greg Newman - Illustrator. Devigner.{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}{% endblock %}" />
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/basics.css" media="screen" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/960.css" media="screen" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/master.css" media="screen" />
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.3.2.min.js"></script>
+    {% disqus_dev %}
+    {% block css_extra %}{% endblock %}
+    {% block js_extra %}{% endblock %}
+</head>
+<body id="gregnewman-com" class="{% block body-class %}base{% endblock %}">
+    <div class="page container_16">
+        {% block body %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+# get python libs
+#-r libs.txt
+
+Django==1.1.1
+South==0.6.2
+django-reversion==1.1.2
+textile==2.1.3
+flickrapi==1.2
+python-twitter==0.5
+feedparser==4.1
+django-markup==0.1
+
+# editable checkouts
+-e git+git://github.com/robhudson/django-debug-toolbar.git#egg=django-debug-toolbar
+-e git+git://github.com/pelme/django-compress.git#egg=django-compress
+-e svn+http://django-tagging.googlecode.com/svn/trunk/#egg=django-tagging
+-e svn+http://django-command-extensions.googlecode.com/svn/trunk/#egg=django-extensions
+-e git+git://github.com/ericflo/django-oembed.git#egg=django-oembed
+-e git+git://github.com/arthurk/django-disqus.git#egg=disqus
+-e svn+http://django-syncr.googlecode.com/svn/trunk/#egg=django-syncr
+-e svn+http://django-contact-form.googlecode.com/svn/trunk/#egg=contact_form
+-e git+git://github.com/gregnewman/django-grappelli.git#egg=django-grappelli

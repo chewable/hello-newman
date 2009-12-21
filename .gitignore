@@ -1,0 +1,10 @@
+*.pyc
+local_settings.py
+pip-log.txt
+.#todo.org
+.#*
+\#*\#
+templates/admin/
+templates/grappelli/
+.hg
+.hgignore

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load flickr %}
+{% block body %}
+<div class="header clearfix">
+    <div class="logo grid_9">
+        <a href="/">greg newman</a> <span>[professional artist, designer and developer]</span>
+    </div>
+    <div class="navbar grid_5">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="">Work</a></li>
+            <li><a href="">Code</a></li>
+        </ul>
+    </div>
+    <div class="socialone grid_2">
+        [ illustration ]
+    </div>
+</div>
+
+<div class="subheader clearfix">
+    <div class="illobox grid_9">
+        [ illustration ]
+    </div>
+    <div class="cat-search grid_5">
+        [ illustration ]
+    </div>
+    <div class="socialtwo grid_2">
+        [ illustration ]
+    </div>
+</div>
+
+<div class="container clearfix">
+    <div class="content">
+    {% if messages %}
+		<ul id="messages">
+			{% for message in messages %}
+			<li id="message_{{ forloop.counter }}"><a href="#" onclick="$('#message_{{ forloop.counter }}').fadeOut(); return false;"><small>clear</small></a> {{ message }}</li>
+			{% endfor %}
+		</ul>
+    {% endif %}
+    
+    {% block content %}
+    {% endblock %}
+    </div>
+</div>
+
+    <div class="footer">
+    <div class="clearfix container_16">
+    <div class="tweets grid_4">
+        <h3>Chirp Chirp</h3>
+        <ul>
+        {% for tweet in tweets %}
+            <li><a href="http://twitter.com/gregnewman/status/{{ tweet.twitter_id }}">{{ tweet.text }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    <div class="flickr grid_4">
+        <h3>Flickr Pool</h3>
+        {% get_random_photos 10 as random_photos %}
+        {% for photo in random_photos %}
+            <a href="{{ photo.photopage_url }}" /><img src="http://farm3.static.flickr.com/{{ photo.server }}/{{ photo.flickr_id }}_{{ photo.secret }}.jpg" width="{{ photo.thumbnail_width }}" height="{{ photo.thumbnail_height }}" alt="{{ photo.title }}" /></a>
+        {% endfor %}
+    </div>
+
+    <div class="readernaut grid_4">
+        <h3>Reading or Read</h3>
+        <ul>
+        {% for book in books %}
+            <a href="{{ book.permalink }}"><li class="clearfix"><img src="{{ book.cover_small }}" /> {{ book.author }}<br />{{ book.title }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    <div class="copyright grid_4">
+        <h3>Legal Bull-*@$%</h3>
+        <p>&copy;2009 Greg Newman, All Rights Reserved.  Content, images and illustrations may not be reproduced without written permission from author.</p>
+        <p>This site hand-crafted with Django, 960 and Heineken.  The font used is Fertigo Pro.</p>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

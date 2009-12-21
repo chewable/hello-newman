@@ -1,0 +1,38 @@
+{% extends "site_base.html" %}
+{% load markup %}
+{% load tagging_tags %}
+{% load markup_tags %}
+{% load disqus_tags %}
+{% load comparison %}
+
+{% block content %}
+
+    <div class="entries grid_9">
+    {% for entry in entries %}
+    {% if forloop.counter < 4 %}
+    <div class="entry clearfix">
+        <h2 class="prefix_2"><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
+        <div class="entry-meta grid_2">
+            {{ entry.created_on|date:"F jS, y" }}<br />
+            <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
+            {% disqus_num_replies %}
+        </div>
+        <div class="entry-body grid_6">
+            {{ entry.excerpt|apply_markup:entry.markup }}
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+
+    <div class="distractions grid_7">
+        <h2>Distractions</h2>
+        {% for distraction in distractions %}
+        <div class="distractblock grid_5">
+            <h4><a href="{{ distraction.link }}" target="_blank">{{ distraction.title }}</a></h4>
+                <span>{{ distraction.description }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    
+{% endblock %}
