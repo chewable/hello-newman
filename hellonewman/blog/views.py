@@ -24,22 +24,18 @@ def home_page(request):
 
 def entry_detail(request, year, month, day, slug, **kwargs):
     """
-    A wrapper around ``django.views.generic.date_based.object_detail`` that
     displays the details of an ``Entry``.
         
     """
-    return date_based.object_detail(
-        request,
-        year = year,
-        month = month,
-        day = day,
-        slug = slug,
-        queryset=Entry.objects.all(),
-        date_field='created_on',
-        template_object_name='entry'
-    )
+    entry = get_object_or_404(Entry, slug=slug)
+    entry.increase_read_count()
 
-def archive_day(request, user):
+    return render_to_response("blog/entry_detail.html", {
+        "entry": entry,
+    }, context_instance=RequestContext(request))
+
+
+def archive_day(request):
     """
     A wrapper around ``django.views.generic.date_based.archive_day`` that
     displays an archive of entries.

@@ -107,6 +107,10 @@ class Entry(models.Model):
     def is_published(self):
         return self.published
 
+    def increase_read_count(self):
+        self.read_count += 1
+        self.save()
+
 
 class Distraction(models.Model):
     """
