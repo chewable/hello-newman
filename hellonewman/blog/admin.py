@@ -6,7 +6,7 @@ from reversion.admin import VersionAdmin
 
 class EntryAdmin(VersionAdmin):
     ordering = ('-created_on',)
-    list_display = ('title', 'published', 'created_on')
+    list_display = ('title', 'published', 'created_on', 'read_count')
     list_filter = ('published',)
     prepopulated_fields = {'slug': ('title',)}
     save_on_top = True

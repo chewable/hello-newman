@@ -84,6 +84,7 @@ class Entry(models.Model):
     publish_on = models.DateTimeField(_('Publish On'), null=True, blank=True)
     expire_on = models.DateTimeField(_('Expire On'), null=True, blank=True)
 
+    read_count = models.IntegerField(default=0, editable=False)
     created_on = CreationDateTimeField()
     updated_on = ModificationDateTimeField()
 
