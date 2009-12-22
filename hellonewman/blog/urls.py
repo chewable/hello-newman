@@ -6,10 +6,6 @@ urlpatterns = patterns('',
         view = 'hellonewman.blog.views.entry_detail',
         name = 'entry-detail'
     ),
-    url(r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$',
-        view = 'hellonewman.blog.views.archive_day',
-        name = 'archive-day'
-    ),
     url(r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/$',
         view = 'hellonewman.blog.views.archive_month',
         name = 'archive-month'

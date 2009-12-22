@@ -35,30 +35,17 @@ def entry_detail(request, year, month, day, slug, **kwargs):
     }, context_instance=RequestContext(request))
 
 
-def archive_day(request):
-    """
-    A wrapper around ``django.views.generic.date_based.archive_day`` that
-    displays an archive of entries.
-    
-    """
-    return date_based.archive_day(
-        request,
-        queryset=Entry.all(),
-        date_field='created_on',
-        template_object_name='entry'
-    )
-
 def archive_index(request):
     """
     """
     return date_based.archive_index(
         request,
-        queryset=Entry.all(),
+        queryset=Entry.objects.all(),
         date_field='created_on',
         template_object_name='entry'
     )
 
-def archive_month(request, user):
+def archive_month(request):
     """
     A wrapper around ``django.views.generic.date_based.archive_month`` that
     displays an archive of entries for the given month.
@@ -66,12 +53,12 @@ def archive_month(request, user):
     """
     return date_based.archive_month(
         request,
-        queryset=Entry.all(),
+        queryset=Entry.objects.all(),
         date_field='created_on',
         template_object_name='entry'
     )
 
-def archive_year(request, user):
+def archive_year(request):
     """
     A wrapper around ``django.views.generic.date_based.archive_year`` that
     displays an archive of entries for the given year.
@@ -79,7 +66,7 @@ def archive_year(request, user):
     """
     return date_based.archive_year(
         request,
-        queryset=Entry.all(),
+        queryset=Entry.objects.all(),
         date_field='created_on',
         make_object_list=True,
         template_object_name='entry'
