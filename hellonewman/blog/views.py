@@ -14,8 +14,8 @@ def home_page(request):
     Displays the page matching the given slug
     """
 
-    entries = Entry.objects.filter(published=True)[:10]
-    distractions = Distraction.objects.filter(published=True)[:6]
+    entries = Entry.objects.all()[:10]
+    distractions = Distraction.objects.all()[:6]
     
     return render_to_response('blog/home_page.html', {
         "entries": entries,

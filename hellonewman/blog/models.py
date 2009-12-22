@@ -14,7 +14,7 @@ from django_extensions.db.fields import ModificationDateTimeField
 
 tagging = models.get_app('tagging')
 from tagging.fields import TagField
-
+from blog.managers import EntryManager, DistractionManager
 
 class Blog(models.Model):
     """
@@ -95,6 +95,8 @@ class Entry(models.Model):
     def __unicode__(self):
         return self.title
 
+    objects = EntryManager()
+
     @permalink
     def get_absolute_url(self):
         return ('entry-detail', None, {
@@ -137,6 +139,8 @@ class Distraction(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    objects = DistractionManager()
 
     def save(self, *args, **kwargs):
         self.updated_on = datetime.now()
