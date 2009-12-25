@@ -7,17 +7,17 @@
 
 {% block content %}
 
-    <div class="entries grid_9">
+    <div class="entries">
     {% for entry in entries %}
     {% if forloop.counter < 4 %}
-    <div class="entry clearfix">
-        <h2 class="prefix_2"><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
-        <div class="entry-meta grid_2">
+    <div class="entry">
+        <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
+        <div class="entry-meta">
             {{ entry.created_on|date:"F jS, y" }}<br />
             <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
             {% disqus_num_replies %}
         </div>
-        <div class="entry-body grid_6">
+        <div class="entry-body">
             {{ entry.excerpt|apply_markup:entry.markup }}
         </div>
     </div>
@@ -25,10 +25,10 @@
     {% endfor %}
     </div>
 
-    <div class="distractions grid_7">
+    <div class="distractions">
         <h2>Distractions</h2>
         {% for distraction in distractions %}
-        <div class="distractblock grid_5">
+        <div class="distractblock">
             <h4><a href="{{ distraction.link }}" target="_blank">{{ distraction.title }}</a></h4>
                 <span>{{ distraction.description }}</span>
         </div>
