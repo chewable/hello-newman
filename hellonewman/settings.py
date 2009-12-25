@@ -92,7 +92,6 @@ INSTALLED_APPS = (
     'grappelli',
     'compressor',
     'syncr.flickr',
-    'syncr.twitter',
     'syncr.readernaut',
     'south',
     'tagging',
