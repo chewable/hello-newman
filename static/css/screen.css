@@ -31,15 +31,21 @@ header {
     margin-bottom: 20px;
 }
 
-header h1 {
+h1, h2, h3 {
     font-family: 'Sorts Mill Goudy', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 24px;
+    font-weight: bold;
     color: #666;
+}
+
+header h1 {
+    font-size: 36px;
 }
 
 header h1 span {
     font-family: 'Junction', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 11px;
+    display: block;
+    margin-left: 70px;
 }
 
 #page {
