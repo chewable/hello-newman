@@ -21,15 +21,6 @@
 </section>
 
 <footer>
-    <div class="tweets">
-        <h3>Chirp Chirp</h3>
-        <ul>
-        {% for tweet in tweets %}
-            <li><a href="http://twitter.com/gregnewman/status/{{ tweet.twitter_id }}">{{ tweet.text }}</a></li>
-        {% endfor %}
-        </ul>
-    </div>
-
     <div class="flickr">
         <h3>Flickr Pool</h3>
         {% get_random_photos 10 as random_photos %}
