@@ -5,10 +5,10 @@
 {% load disqus_tags %}
 
 {% block content %}
-    <div class="detail clearfix">
-        <div class="entry grid_12">
-            <h2 class="prefix_3">{{ entry.title }}</h2>
-            <div class="entry-meta grid_3">
+    <div class="detail">
+        <div class="entry">
+            <h2>{{ entry.title }}</h2>
+            <div class="entry-meta">
                 {{ entry.created_on|date:"F jS, y" }}<br />
                 <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
                 {% disqus_num_replies %}
@@ -22,12 +22,12 @@
                 </ul>
                 {% endif %}
             </div>
-            <div class="entry-body grid_8">
+            <div class="entry-body">
                 {{ entry.excerpt|apply_markup:entry.markup }}
                 {{ entry.body|apply_markup:entry.markup }}
             </div>
         </div>
-        <div class="related grid_4">
+        <div class="related">
             <h2>Related Entries</h2>
             <ul>
             {% for related in entry.related_content.all %}
@@ -39,7 +39,7 @@
             </ul>
         </div>
     </div>
-    <div class="entry-disqus prefix_2 grid_10">
+    <div class="entry-disqus">
         <a name="disqus_thread"></a>
         {% disqus_show_comments %}
     </div>
