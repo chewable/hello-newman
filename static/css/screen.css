@@ -30,14 +30,14 @@ header h1 {
     color: #666;
 }
 
-.page {
+#page {
     padding: 0 10px 0 20px;
     position: relative;
     width: 960px;
     margin: 0 auto;
 }
 
-.navbar {
+nav {
     width: 412px;
     height: 42px;
     background: #000;
@@ -49,19 +49,19 @@ header h1 {
     right: 23px;
 }
 
-.navbar ul {
+nav ul {
     list-style: none;
     margin: 0;
     padding: 9px 0 0 0;
     text-align: center;
 }
 
-.navbar li {
+nav li {
     display: inline;
     margin: 0 5px;
 }
 
-.navbar li a {
+nav li a {
     -webkit-transition: all 250ms linear;
     background: #474747;
     border: 0;
@@ -73,7 +73,7 @@ header h1 {
     font-size: 0.9em;
 }
 
-.navbar li a:hover {
+nav li a:hover {
     background: #00A0D3;
     color: #fff;
 }
