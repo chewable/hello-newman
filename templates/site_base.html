@@ -15,16 +15,8 @@
 
 <section>
     <div class="content">
-    {% if messages %}
-		<ul id="messages">
-			{% for message in messages %}
-			<li id="message_{{ forloop.counter }}"><a href="#" onclick="$('#message_{{ forloop.counter }}').fadeOut(); return false;"><small>clear</small></a> {{ message }}</li>
-			{% endfor %}
-		</ul>
-    {% endif %}
-    
-    {% block content %}
-    {% endblock %}
+        {% block content %}
+        {% endblock %}
     </div>
 </section>
 
