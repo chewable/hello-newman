@@ -14,7 +14,7 @@ from django_extensions.db.fields import ModificationDateTimeField
 
 tagging = models.get_app('tagging')
 from tagging.fields import TagField
-from blog.managers import EntryManager, DistractionManager
+from blog.managers import BlogManager, EntryManager, DistractionManager
 
 class Blog(models.Model):
     """
@@ -34,6 +34,8 @@ class Blog(models.Model):
     class Meta:
         ordering = ['title',]
 
+    objects = BlogManager()
+        
     def __unicode__(self):
         return self.title
     

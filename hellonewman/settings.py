@@ -78,6 +78,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'hellonewman.core.context_processors.contact_email',
     'hellonewman.core.footer.footer_feeds',
+    'hellonewman.core.context_processors.journals',
 )
 
 INSTALLED_APPS = (

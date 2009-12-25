@@ -10,6 +10,12 @@
             <li><a href="">Work</a></li>
             <li><a href="">Code</a></li>
         </ul>
+        <ul>
+            <li>Journals:</li>
+            {% for journal in journals %}
+            <li><a href="">{{ journal.title }}</a></li>
+            {% endfor %}
+        </ul>
     </nav>
 </header>
 
