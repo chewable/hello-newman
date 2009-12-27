@@ -9,7 +9,7 @@
 }
 
 body {
-    background: #f1f1e9 url(../images/page_bg.png) no-repeat fixed;;
+    background: #f1f1e9 url(../images/page_bg.png) no-repeat fixed;
     color: #444;
     font-family: 'Adobe Caslon Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 12pt;
@@ -31,7 +31,9 @@ p {
 }
 
 header {
+    background: url(../images/header_bg.png) no-repeat top center;
     position: relative;
+    padding-top: 25px;
     margin-bottom: 20px;
     border-bottom: 2px solid #444;
 }
@@ -44,6 +46,9 @@ h1, h2, h3 {
 header h1 {
     font-size: 36px;
     letter-spacing: -1px;
+    position: absolute;
+    top: 25px;
+    left: 55px;
 }
 
 header h1 span {
@@ -54,12 +59,13 @@ header h1 span {
 }
 
 .profile {
+    margin-right: 15px;
     width: 220px;
     font-size: 0.9em;
     line-height: 200%;
     text-align: right;
     position: absolute;
-    top: 0;
+    top: 30px;
     right: 0;
 }
 
@@ -78,6 +84,7 @@ header h1 span {
 }
 
 nav {
+    margin: 50px 0 0 15px;
     text-align: left;
 }
 
@@ -130,7 +137,7 @@ article h2,
     font-size: 14pt;
     line-height: 21px;
     text-transform: uppercase;
-    padding: 3px 0;
+    padding: 3px 0 8px 0;
     margin: 0 0 10px 0;
     font-weight: bold;
     letter-spacing: -1px;
@@ -139,6 +146,7 @@ article h2,
 .entry-disqus h2,
 .sidebar h2,
 .entries h2 {
+    background: url(../images/h2_bg.png) no-repeat;
     font-size: 10pt;
 }
 
@@ -161,6 +169,7 @@ article img {
 
 .entry-meta span {
     font-family: "Adobe Caslon Pro", Georgia, serif;
+    display: block;
     font-size: 1.3em;
     font-style: italic;
     font-weight: bold;
@@ -311,6 +320,7 @@ footer .copyright ul {
 }
 
 footer .copyright ul li {
+    font-family: 'Junction', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 21px;
     font-size: 9pt;
 }
