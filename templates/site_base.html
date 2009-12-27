@@ -3,51 +3,29 @@
 {% block body %}
 <header>
     <h1><a href="/">greg newman</a> <span>artist. designer. developer.</span></h1>
+    <div class="profile">
+        <img src="{{ MEDIA_URL }}images/me.png" />
+        <a href="http://twitter.com/gregnewman">@gregnewman</a><br />
+        greg@gregnewman.org
+    </div>
     <nav>
         <ul>
-            <li><a href="/">Home</a></li>
+            <li class="home"><a href="/journal/">Home</a></li>
             <li><a href="/about/">About</a></li>
             <li><a href="">Projects</a></li>
 
-            <li>Journals:</li>
+            <li class="journals">Journals:</li>
             {% for journal in journals %}
             <li><a href="">{{ journal.title }}</a></li>
             {% endfor %}
-            <li><a href="">All Mixed Up</a></li>
+            <li><a href="">Mix It Up</a></li>
         </ul>
     </nav>
 </header>
 
 <section>
-    <div class="content">
-        {% block content %}
-        {% endblock %}
-    </div>
+    {% block content %}
+    {% endblock %}
 </section>
-
-<footer>
-    <div class="flickr">
-        <h3>Flickr Pool</h3>
-        {% get_random_photos 10 as random_photos %}
-        {% for photo in random_photos %}
-            <a href="{{ photo.photopage_url }}" /><img src="http://farm3.static.flickr.com/{{ photo.server }}/{{ photo.flickr_id }}_{{ photo.secret }}.jpg" width="{{ photo.thumbnail_width }}" height="{{ photo.thumbnail_height }}" alt="{{ photo.title }}" /></a>
-        {% endfor %}
-    </div>
-
-    <div class="readernaut">
-        <h3>Reading or Read</h3>
-        <ul>
-        {% for book in books %}
-            <a href="{{ book.permalink }}"><li class="clearfix"><img src="{{ book.cover_small }}" /> {{ book.author }}<br />{{ book.title }}</a></li>
-        {% endfor %}
-        </ul>
-    </div>
-
-    <div class="copyright">
-        <h3>Legal Bull-*@$%</h3>
-        <p>&copy;2009 Greg Newman, All Rights Reserved.  Content, images and illustrations may not be reproduced without written permission from author.</p>
-        <p>This site hand-crafted with Django, 960 and Heineken.  The font used is Fertigo Pro.</p>
-    </div>
-</footer>
 
 {% endblock %}

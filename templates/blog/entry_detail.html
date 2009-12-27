@@ -5,42 +5,46 @@
 {% load disqus_tags %}
 
 {% block content %}
-    <div class="detail">
-        <div class="entry">
-            <h2>{{ entry.title }}</h2>
-            <div class="entry-meta">
-                {{ entry.created_on|date:"F jS, y" }}<br />
-                <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
-                {% disqus_num_replies %}
-                {% tags_for_object entry as tags %}
-                {% if tags %}
-                <ul>
-                   <li>Tags: </li>
-                {% for tag in tags %}
-                   <li>{{ tag }}</li>
-                {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-            <div class="entry-body">
-                {{ entry.excerpt|apply_markup:entry.markup }}
-                {{ entry.body|apply_markup:entry.markup }}
-            </div>
-        </div>
-        <div class="related">
-            <h2>Related Entries</h2>
+    <article>
+        <h2>{{ entry.title }}</h2>
+        <div class="entry-meta">
+            <span>On {{ entry.created_on|date:"F jS, y" }}</span>
+            <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
+            {% disqus_num_replies %}
+            {% tags_for_object entry as tags %}
+            {% if tags %}
             <ul>
-            {% for related in entry.related_content.all %}
-                <li><h3><a href="{{ related.get_absolute_url }}">{{ related.title }}</a></h3>
-                    <span>{{ related.excerpt|apply_markup:entry.markup|truncatewords:15 }}</span></li>
-            {% empty %}
-                <li>No related entries.</li>
+               <li>Tagged: </li>
+            {% for tag in tags %}
+               <li>{{ tag }}</li>
             {% endfor %}
             </ul>
+            {% endif %}
+            In Journal -- {% for blog in entry.blog.all %}{{ blog.title }}{% endfor %}
         </div>
-    </div>
-    <div class="entry-disqus">
+        <div class="entry-body">
+            {{ entry.excerpt|apply_markup:entry.markup }}
+            {{ entry.body|apply_markup:entry.markup }}
+        </div>
+
+        <div class="related">
+
+        </div>
+    </article>
+
+    <section class="entry-disqus">
         <a name="disqus_thread"></a>
         {% disqus_show_comments %}
-    </div>
+    </section>
+
+    <section class="sidebar">
+        <h2>Related Entries</h2>
+        {% for related in entry.related_content.all %}
+            <h3><a href="{{ related.get_absolute_url }}">{{ related.title }}</a></h3>
+                <span>{{ related.excerpt|apply_markup:entry.markup|truncatewords:15 }}</span>
+        {% empty %}
+            No related entries.
+        {% endfor %}
+    </section>
+    <div class="clearfix"></div>
 {% endblock %}

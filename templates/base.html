@@ -21,5 +21,46 @@
     <section id="page">
         {% block body %}{% endblock %}
     </section>
+
+    <footer>
+        <section>
+            <div class="flickr">
+                <h3>Flickr Pool</h3>
+                {% get_random_photos 10 as random_photos %}
+                {% for photo in random_photos %}
+                    <a href="{{ photo.photopage_url }}" /><img src="http://farm3.static.flickr.com/{{ photo.server }}/{{ photo.flickr_id }}_{{ photo.secret }}.jpg" width="{{ photo.thumbnail_width }}" height="{{ photo.thumbnail_height }}" alt="{{ photo.title }}" /></a>
+                {% endfor %}
+            </div>
+
+            <div class="readernaut">
+                <h3>Reading or Read</h3>
+                {% for book in books %}
+                    <div class="clearfix"><a href="{{ book.permalink }}"><img src="{{ book.cover_small }}" /> <p>{{ book.title }}<span>{{ book.author }}</span></p></a></div>
+                {% endfor %}
+            </div>
+
+            <div class="copyright">
+                <h3>Legal Bull-*@$%</h3>
+                <p>&copy;2009 Greg Newman, All Rights Reserved.<br />Content, images and illustrations may not be reproduced without written permission from author.</p>
+                <p>This site was hand-crafted with Python, Django & hello!newman on a Mac.</p>
+                <h3 class="respect">Respect</h3>
+                <ul>
+                    <li><a href="http://bryanveloso.com/">Bryan Veloso</a></li>
+                    <li><a href="http://antonpeck.com/">Anton Peck</a></li>
+                    <li><a href="http://cdharrison.com/">Chris Harrison</a></li>
+                    <li><a href="http://jtauber.com/">James Tauber</a></li>
+                    <li><a href="http://jannisleidel.com/">Jannis Leidel</a></li>
+                </ul>
+                <ul>
+                    <li><a href="http://oebfare.com/">Brian Rosner</a></li>
+                    <li><a href="http://www.davemcnally.net/">Dave McNally</a></li>
+                    <li><a href="http://www.vonglitschka.com/">Von Glitschka</a></li>
+                    <li><a href="http://georgecoghill.com/">George Coghill</a></li>
+                </ul>
+            </div>
+            
+            <div class="clearfix"></div>
+        </section>
+    </footer>
 </body>
 </html>
