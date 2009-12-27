@@ -7,9 +7,9 @@
 
 {% block content %}
 
-    <div class="entries">
+    <section class="entries">
     {% for entry in entries %}
-    {% if forloop.counter < 4 %}
+    {% if forloop.counter = 1 %}
     <article>
         <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
         <div class="entry-meta">
@@ -21,9 +21,17 @@
             {{ entry.body|apply_markup:entry.markup|truncatewords:60 }}
         </div>
     </article>
+    {% else %}
+    <article>
+        <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
+        <div class="entry-meta">
+            <span>On {{ entry.created_on|date:"F jS, Y" }}</span>
+            <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
+            {% disqus_num_replies %}
+        </div>
     {% endif %}
     {% endfor %}
-    </div>
+    </section>
 
     <section class="distractions">
         <h2>Distractions</h2>
