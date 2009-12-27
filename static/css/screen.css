@@ -104,7 +104,7 @@ nav li.journals {
 }
 
 nav li a {
-    -webkit-transition: all 250ms linear;
+    -webkit-transition: all 100ms linear;
     color: #444;
     padding: 3px 5px;
     font-weight: normal;
@@ -123,7 +123,8 @@ article {
 
 article h2,
 .entry-disqus h2,
-.sidebar h2 {
+.sidebar h2,
+.entries h2 {
     border-top: 1px dotted #ccc;
     border-bottom: 1px dotted #ccc;
     font-size: 14pt;
@@ -136,7 +137,8 @@ article h2,
 }
 
 .entry-disqus h2,
-.sidebar h2 {
+.sidebar h2,
+.entries h2 {
     font-size: 10pt;
 }
 
@@ -172,19 +174,8 @@ article img {
     display: inline;
 }
 
+section.entry-disqus,
 section.entries {
-    width: 420px;
-    float: left;
-    padding: 0 15px 15px 15px;
-}
-
-section.distractions {
-    float: right;
-    width: 320px;
-    font-size: 0.9em;
-}
-
-section.entry-disqus {
     background: rgba(255, 255, 255, 0.2);
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
@@ -197,10 +188,12 @@ section.entry-disqus {
     display: none;
 }
 
-section.sidebar {
+section.sidebar,
+section.distractions {
     width: 165px;
     margin: 0 15px 15px 15px;
     float: left;
+    font-size: 0.8em;
 }
 
 footer {

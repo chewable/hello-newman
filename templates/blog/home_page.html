@@ -7,7 +7,6 @@
 
 {% block content %}
 
-    <section class="entries">
     {% for entry in entries %}
     {% if forloop.counter = 1 %}
     <article>
@@ -21,9 +20,14 @@
             {{ entry.body|apply_markup:entry.markup|truncatewords:60 }}
         </div>
     </article>
-    {% else %}
-    <article>
-        <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
+    {% endif %}
+    {% endfor %}
+
+    <section class="entries">
+    <h2>Older Journal Entries</h2>
+    {% for entry in entries %}
+    {% if forloop.counter > 1 %}
+        <h3><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h3>
         <div class="entry-meta">
             <span>On {{ entry.created_on|date:"F jS, Y" }}</span>
             <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
@@ -33,7 +37,7 @@
     {% endfor %}
     </section>
 
-    <section class="distractions">
+    <section class="sidebar">
         <h2>Distractions</h2>
         {% for distraction in distractions %}
         <div class="distractblock">
