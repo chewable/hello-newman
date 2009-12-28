@@ -135,9 +135,7 @@ COMPRESS_JS = {
         'source_filenames': ('js/jquery-1.3.2.min.js', 'js/modernizr.min.js'),  
         'output_filename': 'js/hellonewman.r?.js',  
     }
-}  
-COMPRESS_JS_FILTERS = None
-
+}
 
 #syncr stuffz
 READERNAUT_USERNAME = ''
