@@ -12,7 +12,7 @@ django-markup==0.1
 
 # editable checkouts
 -e git+git://github.com/robhudson/django-debug-toolbar.git#egg=django-debug-toolbar
--e git+git://github.com/pelme/django-compress.git#egg=django-compress
+-e git+git://github.com/dziegler/django-css.git#egg=django-css
 -e svn+http://django-tagging.googlecode.com/svn/trunk/#egg=django-tagging
 -e svn+http://django-command-extensions.googlecode.com/svn/trunk/#egg=django-extensions
 -e git+git://github.com/ericflo/django-oembed.git#egg=django-oembed
