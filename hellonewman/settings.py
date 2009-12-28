@@ -125,7 +125,7 @@ COMPRESS_VERSION = True
 COMPRESS_CSS = {
     'screen': {
         'source_filenames': ('css/reset.css', 'css/screen.css'),
-        'output_filename': 'c/screen.r?.css',
+        'output_filename': 'css/screen.r?.css',
         'extra_context': { 'media': 'screen,projection' }
     },
 }
