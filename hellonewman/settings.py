@@ -91,7 +91,7 @@ INSTALLED_APPS = (
 
     # Third Party
     'grappelli',
-    'compressor',
+    'compress',
     'syncr.flickr',
     'syncr.readernaut',
     'south',
@@ -119,6 +119,8 @@ MARKUP_CHOICES = (
 GRAPPELLI_ADMIN_TITLE = 'Hello Newman'
 
 COMPRESS_VERSION = True
+COMPRESS_AUTO = True
+COMPRESS_VERSION = True
 #CSSTIDY_BINARY = '/usr/local/bin/csstidy'
 COMPRESS_CSS = {
     'screen': {
@@ -126,19 +128,16 @@ COMPRESS_CSS = {
         'output_filename': 'c/screen.r?.css',
         'extra_context': { 'media': 'screen,projection' }
     },
-#    'print': {
-#        'source_filenames': ('static/css/print.css',),
-#        'output_filename': 'c/print.r?.css',
-#        'extra_context': { 'media': 'print' }
-#    }
 }
+
+COMPRESS_JS = {  
+    'js': {  
+        'source_filenames': ('js/jquery-1.3.2.min.js', 'js/modernizr.min.js'),  
+        'output_filename': 'js/hellonewman.r?.js',  
+    }
+}  
 COMPRESS_JS_FILTERS = None
-#COMPRESS_JS = {
-#    'scripts': {
-#        'source_filenames': ('static/js/impact.js',),
-#        'output_filename': 'c/scripts.r?.js'
-#    }
-#}
+
 
 #syncr stuffz
 READERNAUT_USERNAME = ''
