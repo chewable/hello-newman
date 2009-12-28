@@ -124,8 +124,6 @@ FLICKR_API_KEY = ''
 FLICKR_API_SECRET = ''
 
 DEFAULT_FROM_EMAIL = ''
-DISQUS_API_KEY = ''
-DISQUS_WEBSITE_SHORTNAME = ''
 
 # Use local_settings.py for things to override privately
 try:
