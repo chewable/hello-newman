@@ -101,7 +101,6 @@ INSTALLED_APPS = (
     'tagging',
     'django_markup',
     'reversion',
-    'disqus',
 
     # local
     'hellonewman.core',

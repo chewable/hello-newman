@@ -2,7 +2,6 @@
 {% load markup %}
 {% load tagging_tags %}
 {% load markup_tags %}
-{% load disqus_tags %}
 {% load comparison %}
 
 {% block content %}
@@ -14,7 +13,6 @@
         <div class="entry-meta">
             <span>On {{ entry.created_on|date:"F jS, Y" }}</span>
             <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
-            {% disqus_num_replies %}
         </div>
         <div class="entry-body">
             {{ entry.body|apply_markup:entry.markup|truncatewords:60 }}
@@ -31,7 +29,6 @@
         <div class="entry-meta">
             <span>On {{ entry.created_on|date:"F jS, Y" }}</span>
             <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
-            {% disqus_num_replies %}
         </div>
     {% endif %}
     {% endfor %}

@@ -2,7 +2,6 @@
 {% load markup %}
 {% load tagging_tags %}
 {% load markup_tags %}
-{% load disqus_tags %}
 
 {% block content %}
     <article>
@@ -10,7 +9,6 @@
         <div class="entry-meta">
             <span>On {{ entry.created_on|date:"F jS, y" }}</span>
             <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
-            {% disqus_num_replies %}
             {% tags_for_object entry as tags %}
             {% if tags %}
             <ul>
@@ -34,8 +32,7 @@
 
     <section class="entry-disqus">
         <h2>Comments</h2>
-        <a name="disqus_thread"></a>
-        {% disqus_show_comments %}
+
     </section>
 
     <section class="sidebar">
