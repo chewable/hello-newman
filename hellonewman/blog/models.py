@@ -131,10 +131,8 @@ class Distraction(models.Model):
     publish_on = models.DateTimeField(_('Publish On'), null=True, blank=True)
     expire_on = models.DateTimeField(_('Expire On'), null=True, blank=True)
 
-    created_by = models.ForeignKey(User, null=True, editable=False, related_name="%(class)s_created_by")
-    created_on = models.DateTimeField(_('Created On'), default=datetime.now, editable=False)
-    updated_on = models.DateTimeField(_('Updated On'), editable=False)
-    updated_by = models.ForeignKey(User, null=True, editable=False)
+    created_on = CreationDateTimeField()
+    updated_on = ModificationDateTimeField()
     
     class Meta:
         ordering = ['-created_on', ]
