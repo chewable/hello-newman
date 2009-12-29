@@ -142,9 +142,5 @@ class Distraction(models.Model):
 
     objects = DistractionManager()
 
-    def save(self, *args, **kwargs):
-        self.updated_on = datetime.now()
-        super(Distraction, self).save()
-
     def is_published(self):
         return self.published
