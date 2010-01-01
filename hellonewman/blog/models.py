@@ -1,13 +1,8 @@
 from datetime import datetime
-from django.core.exceptions import ImproperlyConfigured
 from django.db import models
-from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
-from django.utils.safestring import mark_safe
-from django.core.urlresolvers import reverse
-from hellonewman import settings
 from django_markup.fields import MarkupField
-from django.db.models import get_model, permalink
+from django.db.models import permalink
 from django_extensions.db.fields import AutoSlugField
 from django_extensions.db.fields import CreationDateTimeField
 from django_extensions.db.fields import ModificationDateTimeField
