@@ -150,11 +150,12 @@ def blog_feed(request, slug=None):
         url_name = "blog-feed"
         kwargs = {"slug": blog.slug}
     feed_url = "http://%s%s" % (current_site.domain, reverse(url_name, kwargs=kwargs))
-    
+
     if entries:
+        print entries
         feed_updated = entries[0].created_on
     else:
-        feed_updated = datetime(2010, 1, 1, 0, 0, 0)
+        feed_updated = datetime.now()
     
     # create a feed hit
     hit = FeedHit()
