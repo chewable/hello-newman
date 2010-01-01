@@ -111,6 +111,7 @@ class Entry(models.Model):
     def is_published(self):
         return self.published
 
+    # increase read count
     def increase_read_count(self):
         self.read_count += 1
         self.save()

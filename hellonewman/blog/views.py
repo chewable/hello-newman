@@ -11,7 +11,7 @@ from hellonewman.blog.models import Entry, Distraction
 
 def home_page(request):
     """
-    Displays the page matching the given slug
+    Displays the landing page
     """
 
     entries = Entry.objects.all()[:9]
