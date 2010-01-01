@@ -10,6 +10,7 @@ from django.views.generic import date_based, list_detail
 from django.utils import simplejson as json
 
 from django.contrib.sites.models import Site
+from tagging.models import Tag, TaggedItem
 
 from hellonewman.blog.models import Entry, Distraction, Blog, FeedHit
 from hellonewman.blog.exceptions import InvalidBlog
@@ -67,6 +68,23 @@ def entry_detail(request, year, month, day, slug, **kwargs):
         "entry": entry,
     }, context_instance=RequestContext(request))
 
+
+def tagged_entries(request, tag):
+    """
+    returns all posts tagged with `tag`
+    """
+    tag = get_object_or_404(Tag, name=tag)
+    entries = TaggedItem.objects.get_by_model(Entry, tag)
+
+    if 'blog_filter' in request.session:
+        entries = entriesfilter(blog__slug=request.session['blog_filter'])
+
+    return render_to_response("blog/tag_list.html", {
+        "entries": entries,
+    }, context_instance=RequestContext(request))
+
+def category_entries(request):
+    pass
 
 def archive_index(request):
     """

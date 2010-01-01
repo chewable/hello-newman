@@ -10,6 +10,10 @@ urlpatterns = patterns('',
         view = 'hellonewman.blog.views.filter_blog',
         name = 'filter-blog'
     ),
+    url(r'^tagged/(?P<tag>.+)/$',
+        view = 'hellonewman.blog.views.tagged_entries',
+        name = 'tagged-entries'
+    ),
     url(r'^feed/$',
         view = 'hellonewman.blog.views.blog_feed',
         name="blog-feed-combined"
