@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.template.loader import render_to_string
-from django.views.generic import date_based, list_detail
+from django.views.generic import date_based
 from django.utils import simplejson as json
 
 from django.contrib.sites.models import Site
@@ -77,7 +77,7 @@ def tagged_entries(request, tag):
     entries = TaggedItem.objects.get_by_model(Entry, tag)
 
     if 'blog_filter' in request.session:
-        entries = entriesfilter(blog__slug=request.session['blog_filter'])
+        entries = entries.filter(blog__slug=request.session['blog_filter'])
 
     return render_to_response("blog/tag_list.html", {
         "entries": entries,
