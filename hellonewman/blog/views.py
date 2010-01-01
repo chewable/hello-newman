@@ -36,8 +36,12 @@ def home_page(request):
     """
     Displays the landing page
     """
-
-    entries = Entry.objects.all()[:9]
+    
+    if 'blog_filter' in request.session:
+        entries = Entry.objects.filter(blog__slug=request.session['blog_filter'])
+    else:
+        entries = Entry.objects.all()[:9]
+                                 
     distractions = Distraction.objects.all()[:5]
     
     return render_to_response('blog/home_page.html', {
