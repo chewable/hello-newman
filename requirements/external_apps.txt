@@ -9,11 +9,11 @@ flickrapi==1.2
 python-twitter==0.5
 feedparser==4.1
 django-markup==0.1
+django-tagging==0.3
 
 # editable checkouts
 -e git+git://github.com/robhudson/django-debug-toolbar.git#egg=django-debug-toolbar
 -e git+git://github.com/dziegler/django-css.git#egg=django-css
--e svn+http://django-tagging.googlecode.com/svn/trunk/#egg=django-tagging
 -e svn+http://django-command-extensions.googlecode.com/svn/trunk/#egg=django-extensions
 -e git+git://github.com/ericflo/django-oembed.git#egg=django-oembed
 -e svn+http://django-syncr.googlecode.com/svn/trunk/#egg=django-syncr
