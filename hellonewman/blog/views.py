@@ -1,13 +1,14 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.generic import date_based, list_detail
 
 from hellonewman.blog.models import Entry, Distraction
+from hellonewman.blog.exceptions import InvalidBlog
 
 def home_page(request):
     """
@@ -80,7 +81,7 @@ def journal_feed(request, blog=None):
     
     try:
         entry = Entry.objects.blog(blog)
-    except InvalidSection:
+    except InvalidBlog:
         raise Http404()
     
     if section is None:

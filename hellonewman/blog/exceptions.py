@@ -1,0 +1,2 @@
+class InvalidBlog(Exception):
+    pass
