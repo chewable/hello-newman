@@ -1,8 +1,5 @@
 from datetime import datetime
 
-from django.contrib.auth.decorators import login_required
-from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
