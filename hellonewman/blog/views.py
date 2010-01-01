@@ -21,10 +21,13 @@ def filter_blog(request, slug=None):
     journal types.
     """
 
-    if slug:
-        request.session['blog_filter'] = slug
+    if slug is None:
+        try:
+            del request.session['blog_filter']
+        except KeyError:
+            pass
     else:
-        del request.session['blog_filter']
+        request.session['blog_filter'] = slug
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
     

@@ -16,9 +16,9 @@
 
             <li class="journals">Journals:</li>
             {% for journal in journals %}
-            <li><a href="{% url filter-blog journal.slug %}">{{ journal.title }}</a></li>
+            <li><a href="{% url filter-blog slug=journal.slug %}">{{ journal.title }}</a></li>
             {% endfor %}
-            <li><a href="">Mix It Up</a></li>
+            <li><a href="{% url filter-blog %}">Mix It Up</a></li>
         </ul>
     </nav>
 </header>

@@ -2,6 +2,10 @@ from django.conf.urls.defaults import *
 
 
 urlpatterns = patterns('',
+    url(r'^filter/$',
+        view = 'hellonewman.blog.views.filter_blog',
+        name = 'filter-blog'
+    ),
     url(r'^filter/(?P<slug>[-\w]+)/$',
         view = 'hellonewman.blog.views.filter_blog',
         name = 'filter-blog'
