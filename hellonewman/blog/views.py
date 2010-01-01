@@ -1,15 +1,20 @@
+from datetime import datetime
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect, Http404, HttpResponse
+from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.template.loader import render_to_string
 from django.views.generic import date_based, list_detail
+from django.utils import simplejson as json
 
 from django.contrib.sites.models import Site
 
-from hellonewman.blog.models import Entry, Distraction, Blog
+from hellonewman.blog.models import Entry, Distraction, Blog, FeedHit
 from hellonewman.blog.exceptions import InvalidBlog
 
 def filter_blog(request, slug=None):
@@ -103,6 +108,19 @@ def archive_year(request):
         template_object_name='entry'
     )
 
+def serialize_request(request):
+    data = {
+        "path": request.path,
+        "META": {
+            "QUERY_STRING": request.META.get("QUERY_STRING"),
+            "REMOTE_ADDR": request.META.get("REMOTE_ADDR"),
+        }
+    }
+    for key in request.META:
+        if key.startswith("HTTP"):
+            data["META"][key] = request.META[key]
+    return json.dumps(data)
+
 def blog_feed(request, slug=None):
     """
     Atom Feeds.  Borrowed and modified from
@@ -134,7 +152,7 @@ def blog_feed(request, slug=None):
     feed_url = "http://%s%s" % (current_site.domain, reverse(url_name, kwargs=kwargs))
     
     if entries:
-        feed_updated = posts[0].created_on
+        feed_updated = entries[0].created_on
     else:
         feed_updated = datetime(2010, 1, 1, 0, 0, 0)
     
