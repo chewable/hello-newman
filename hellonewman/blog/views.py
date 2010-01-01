@@ -101,7 +101,7 @@ def archive_year(request):
         template_object_name='entry'
     )
 
-def journal_feed(request, blog=None):
+def blog_feed(request, blog=None):
     """
     Atom Feeds.  Borrowed and modified from
     http://github.com/eldarion/biblion
