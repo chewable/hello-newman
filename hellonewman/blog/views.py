@@ -7,8 +7,27 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.generic import date_based, list_detail
 
-from hellonewman.blog.models import Entry, Distraction
+from hellonewman.blog.models import Entry, Distraction, Blog
 from hellonewman.blog.exceptions import InvalidBlog
+
+def filter_blog(request, slug=None):
+    """
+    segregates the blog by blog type
+    expects a slug in the url to set the session.
+    this may change to cookie based session in the future
+    but for now we will set it in the session
+
+    if no slug is passed then the user wants to see all
+    journal types.
+    """
+
+    if slug:
+        request.session['blog_filter'] = slug
+    else:
+        del request.session['blog_filter']
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
+    
 
 def home_page(request):
     """
