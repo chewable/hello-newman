@@ -14,7 +14,7 @@ urlpatterns = patterns('',
         view = 'hellonewman.blog.views.blog_feed',
         name="blog-feed-combined"
     ),
-    url(r'^feed/(?P<section>[-\w]+)/$',
+    url(r'^feed/(?P<slug>[-\w]+)/$',
         view = 'hellonewman.blog.views.blog_feed',
         name="blog-feed"
     ),

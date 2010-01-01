@@ -103,35 +103,38 @@ def archive_year(request):
         template_object_name='entry'
     )
 
-def blog_feed(request, blog=None):
+def blog_feed(request, slug=None):
     """
     Atom Feeds.  Borrowed and modified from
     http://github.com/eldarion/biblion
     """
+
+    if slug is None:
+        blog_title = "combined"
+    else:
+        blog = get_object_or_404(Blog, slug=slug)
+        blog_title = blog.title
     
     try:
-        entries = Entry.objects.blog(blog)
+        entries = Entry.objects.filter(blog__slug=slug)
     except InvalidBlog:
         raise Http404()
-    
-    if blog is None:
-        blog = "combined"
-    
-    feed_title = "Journal: %s" % (blog[0].upper())
+        
+    feed_title = "Journal: %s" % (blog_title)
     
     current_site = Site.objects.get_current()
     blog_url = "http://%s%s" % (current_site.domain, reverse("home-page"))
     
-    if section == "combined":
+    if blog_title == "combined":
         url_name = "blog-feed-combined"
         kwargs = {}
     else:
         url_name = "blog-feed"
-        kwargs = {"journal": blog}
+        kwargs = {"slug": blog.slug}
     feed_url = "http://%s%s" % (current_site.domain, reverse(url_name, kwargs=kwargs))
     
     if entries:
-        feed_updated = posts[0].published
+        feed_updated = posts[0].created_on
     else:
         feed_updated = datetime(2010, 1, 1, 0, 0, 0)
     
