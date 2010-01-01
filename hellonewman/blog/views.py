@@ -35,6 +35,8 @@ def filter_blog(request, slug=None):
 def home_page(request):
     """
     Displays the landing page
+    If the blog filter is set in the session then only show
+    those kind of entries
     """
     
     if 'blog_filter' in request.session:
