@@ -71,3 +71,52 @@ def archive_year(request):
         make_object_list=True,
         template_object_name='entry'
     )
+
+def journal_feed(request, blog=None):
+    """
+    Atom Feeds.  Borrowed and modified from
+    http://github.com/eldarion/biblion
+    """
+    
+    try:
+        entry = Entry.objects.blog(blog)
+    except InvalidSection:
+        raise Http404()
+    
+    if section is None:
+        section = "combined"
+    
+    feed_title = "Journal: %s" % (blog[0].upper() + blog[1:])
+    
+    current_site = Site.objects.get_current()
+    blog_url = "http://%s%s" % (current_site.domain, reverse("blog"))
+    
+    if section == "combined":
+        url_name = "blog_feed_combined"
+        kwargs = {}
+    else:
+        url_name = "blog_feed"
+        kwargs = {"journal": blog}
+    feed_url = "http://%s%s" % (current_site.domain, reverse(url_name, kwargs=kwargs))
+    
+    if posts:
+        feed_updated = posts[0].published
+    else:
+        feed_updated = datetime(2009, 8, 1, 0, 0, 0)
+    
+    # create a feed hit
+    hit = FeedHit()
+    hit.request_data = serialize_request(request)
+    hit.save()
+    
+    atom = render_to_string("blog/atom_feed.xml", {
+        "feed_id": feed_url,
+        "feed_title": feed_title,
+        "blog_url": blog_url,
+        "feed_url": feed_url,
+        "feed_updated": feed_updated,
+        "entries": posts,
+        "current_site": current_site,
+    })
+    return HttpResponse(atom, mimetype="application/atom+xml")
+ 
