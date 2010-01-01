@@ -7,6 +7,8 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.generic import date_based, list_detail
 
+from django.contrib.sites.models import Site
+
 from hellonewman.blog.models import Entry, Distraction, Blog
 from hellonewman.blog.exceptions import InvalidBlog
 
@@ -108,30 +110,30 @@ def blog_feed(request, blog=None):
     """
     
     try:
-        entry = Entry.objects.blog(blog)
+        entries = Entry.objects.blog(blog)
     except InvalidBlog:
         raise Http404()
     
-    if section is None:
-        section = "combined"
+    if blog is None:
+        blog = "combined"
     
-    feed_title = "Journal: %s" % (blog[0].upper() + blog[1:])
+    feed_title = "Journal: %s" % (blog[0].upper())
     
     current_site = Site.objects.get_current()
-    blog_url = "http://%s%s" % (current_site.domain, reverse("blog"))
+    blog_url = "http://%s%s" % (current_site.domain, reverse("home-page"))
     
     if section == "combined":
-        url_name = "blog_feed_combined"
+        url_name = "blog-feed-combined"
         kwargs = {}
     else:
-        url_name = "blog_feed"
+        url_name = "blog-feed"
         kwargs = {"journal": blog}
     feed_url = "http://%s%s" % (current_site.domain, reverse(url_name, kwargs=kwargs))
     
-    if posts:
+    if entries:
         feed_updated = posts[0].published
     else:
-        feed_updated = datetime(2009, 8, 1, 0, 0, 0)
+        feed_updated = datetime(2010, 1, 1, 0, 0, 0)
     
     # create a feed hit
     hit = FeedHit()
@@ -144,7 +146,7 @@ def blog_feed(request, blog=None):
         "blog_url": blog_url,
         "feed_url": feed_url,
         "feed_updated": feed_updated,
-        "entries": posts,
+        "entries": entries,
         "current_site": current_site,
     })
     return HttpResponse(atom, mimetype="application/atom+xml")

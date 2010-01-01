@@ -88,7 +88,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.markup',
     'django.contrib.flatpages',
-
+    'django.contrib.sites',
+    
     # Third Party
     'grappelli',
     'compressor',

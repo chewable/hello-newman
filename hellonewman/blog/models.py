@@ -145,3 +145,9 @@ class Distraction(models.Model):
 
     def is_published(self):
         return self.published
+
+
+class FeedHit(models.Model):
+    
+    request_data = models.TextField()
+    created = models.DateTimeField(default=datetime.now)
