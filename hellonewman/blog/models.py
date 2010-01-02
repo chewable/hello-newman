@@ -27,7 +27,7 @@ class Blog(models.Model):
     updated_on = ModificationDateTimeField()
     
     class Meta:
-        ordering = ['title',]
+        ordering = ['title', ]
 
     objects = BlogManager()
         
@@ -44,7 +44,7 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'Categories'
-        ordering = ['title',]
+        ordering = ['title', ]
 
     def __unicode__(self):
         return self.title
@@ -143,6 +143,8 @@ class Distraction(models.Model):
 
 
 class FeedHit(models.Model):
-    
+    """
+    base class to store requests for the atom feeds
+    """
     request_data = models.TextField()
     created = models.DateTimeField(default=datetime.now)
