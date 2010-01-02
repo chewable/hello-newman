@@ -83,11 +83,19 @@ def tagged_entries(request, tag):
         "entries": entries,
     }, context_instance=RequestContext(request))
 
-def category_entries(request):
-    pass
+def category_entries(request, slug):
+    """
+    returns all posts for a given category
+    """
+    entries = Entry.objects.filter(category__slug=slug)
+
+    return render_to_response("blog/category_entries.html", {
+        "entries": entries,
+    }, context_instance=RequestContext(request))
 
 def archive_index(request):
     """
+    entry archives
     """
     return date_based.archive_index(
         request,
@@ -124,6 +132,9 @@ def archive_year(request):
     )
 
 def serialize_request(request):
+    """
+    serializes the data for the atom feeds
+    """
     data = {
         "path": request.path,
         "META": {

@@ -1,0 +1,7 @@
+{% extends "site_base.html" %}
+
+{% block content %}
+    {% for entry in entries %}
+        {{ entry.title }}<br />
+    {% endfor %}
+{% endblock %}
