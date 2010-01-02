@@ -7,32 +7,16 @@
 {% block content %}
 
     {% for entry in entries %}
-    {% if forloop.counter = 1 %}
     <article>
         <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
         <div class="entry-meta">
-            <span>On {{ entry.created_on|date:"F jS, Y" }}</span>
-            <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
+            On {{ entry.created_on|date:"F jS, Y" }}
         </div>
         <div class="entry-body">
             {{ entry.body|apply_markup:entry.markup|truncatewords:60 }}
         </div>
     </article>
-    {% endif %}
     {% endfor %}
-
-    <section class="entries">
-    <h2>Older Journal Entries</h2>
-    {% for entry in entries %}
-    {% if forloop.counter > 1 %}
-        <h3><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h3>
-        <div class="entry-meta">
-            <span>On {{ entry.created_on|date:"F jS, Y" }}</span>
-            <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
-        </div>
-    {% endif %}
-    {% endfor %}
-    </section>
 
     <section class="sidebar">
         <h2>Distractions</h2>

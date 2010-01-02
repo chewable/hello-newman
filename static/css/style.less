@@ -15,13 +15,14 @@
 @serifd: 'Adobe Caslon Pro', Georgia, serif;
 @sans: 'Helvetica Nueu', Helvetica, Arial, sans-serif;
 @heading: 'GraublauWeb', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@headingbold: 'GraublauWebBold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 body {
     color: @grey;
     font-family: @serifd;
     font-size: 10pt;
     letter-spacing: 0.1em;
-    line-height: 145%;
+    line-height: 19px;
     padding: 0;
     position: relative;
     background: url(../images/page_bg.gif) no-repeat fixed;
@@ -44,18 +45,15 @@ body {
     float: left;
 }
 
-.content {
-    width: 470px;
-    padding: 20px 15px;
-}
-
 header {
-    margin-top: 30px;
+    margin-top: 17px;
 }
 
 header h1 {
     font-family: @heading;
     font-size: 14pt;
+    margin: 0;
+    padding: 0;
 }
 
 header h1 span {
@@ -71,4 +69,74 @@ footer {
     color: @white;
     width: 470px;
     padding: 20px 15px;
+}
+
+
+.content {
+    width: 470px;
+    margin-top: 30px;
+    padding: 20px 15px;
+}
+
+.content h2 {
+    font-size: 12pt;
+    font-family: @heading;
+}
+
+.content h2 a {
+    text-decoration: none;
+    color: @black;
+}
+
+.content p {
+    padding: 3px 0 17px 0;
+}
+
+article {
+    position: relative;
+}
+
+article .entry-meta {
+    position: absolute;
+    width: 120px;
+    left: -150px;
+    text-align: right;
+    margin-top: 20px;
+    padding: 3px 15px 3px 0;
+    border: 0;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    background: rgba(220, 207, 182, .30);
+    -webkit-box-shadow: -1px 3px 5px #666;
+    -moz-box-shadow: 0 5px 3px #666;
+    box-shadow: 0 5px 3px #666;
+}
+
+nav {
+    margin: 33px 0 0 0;
+    padding: 0;
+}
+
+nav li {
+    font-family: @heading;
+    font-size: 10pt;
+    padding: 0;
+    margin: 0;
+}
+
+nav li a {
+    color: @grey;
+    text-decoration: none;
+}
+
+nav li.filter {
+    color: @black;
+    margin-top: 19px;
+}
+
+nav li.home {
+    padding-left: 13px;
+    background: url(../images/home-icon.png) no-repeat left;
 }
