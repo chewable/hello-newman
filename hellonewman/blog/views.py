@@ -164,7 +164,7 @@ def blog_feed(request, slug=None):
     except InvalidBlog:
         raise Http404()
         
-    feed_title = "Journal: %s" % (blog_title)
+    feed_title = "Greg Newman: %s" % (blog_title)
     
     current_site = Site.objects.get_current()
     blog_url = "http://%s%s" % (current_site.domain, reverse("home-page"))
@@ -178,7 +178,6 @@ def blog_feed(request, slug=None):
     feed_url = "http://%s%s" % (current_site.domain, reverse(url_name, kwargs=kwargs))
 
     if entries:
-        print entries
         feed_updated = entries[0].created_on
     else:
         feed_updated = datetime.now()
