@@ -4,6 +4,8 @@
 {% load markup_tags %}
 {% load disqus_tags %}
 
+{% block page_title %}{{ entry.title }} by Greg Newman{% endblock %}
+
 {% block content %}
     <article>
         <h2>{{ entry.title }}</h2>
