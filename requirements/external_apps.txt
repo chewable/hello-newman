@@ -18,3 +18,4 @@ django-tagging==0.3
 -e git+git://github.com/ericflo/django-oembed.git#egg=django-oembed
 -e svn+http://django-syncr.googlecode.com/svn/trunk/#egg=django-syncr
 -e git+git://github.com/gregnewman/django-grappelli.git#egg=django-grappelli
+-e git+git://github.com/arthurk/django-disqus.git#egg=disqus

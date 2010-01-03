@@ -98,10 +98,10 @@ INSTALLED_APPS = (
     'south',
     'tagging',
     'django_extensions',
-#    'contact_form',
     'tagging',
     'django_markup',
     'reversion',
+    'disqus',
 
     # local
     'hellonewman.core',
