@@ -70,9 +70,15 @@ header h1 span {
 
 footer {
     background: @black;
+    font-family: @sans;
     color: @white;
     width: 470px;
     padding: 20px 15px;
+}
+
+footer h3 {
+    font-family: @headingbold;
+    margin-bottom: 10px;
 }
 
 .copyright {
@@ -95,9 +101,9 @@ footer {
 
 .content {
     width: 470px;
-    margin-top: 10px;
     padding: 20px 15px 50px 15px;
     background: url(../images/footer_border.png) no-repeat bottom left;
+    border-top: 10px solid rgba(0, 0, 0, 0.5);
 }
 
 .content h2 {
@@ -131,6 +137,10 @@ article {
     position: relative;
 }
 
+article img {
+    border: 2px solid @black;
+}
+
 article .entry-meta {
     border: 0;
 	-webkit-border-top-left-radius: 4px;
@@ -143,6 +153,30 @@ article .entry-meta {
     margin-top: 20px;
     padding: 3px 15px 15px 5px;
     background: url(../images/meta_block.png) no-repeat bottom left;
+}
+
+article .related {
+    border: 0;
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-radius-topright: 4px;
+    font-family: @heading;
+    position: absolute;
+    width: 170px;
+    left: 485px;
+    top: 200px;
+    padding: 3px 0 15px 10px;
+    background: url(../images/related_block.png) no-repeat bottom right;
+    color: @offwhite;
+    font-family: @serifd;
+}
+
+article .related h3 {
+    font-family: @heading;
+}
+
+article .related a {
+    color: @offwhite;
+    display: block;
 }
 
 article .entry-extra {
@@ -196,4 +230,77 @@ nav li.filter {
 nav li.home {
     padding-left: 13px;
     background: url(../images/home-icon.png) no-repeat left;
+}
+
+.respect ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 9pt;
+}
+
+.respect ul li {
+    margin: 5px 0;
+    display: block !important;
+}
+
+.respect li a {
+    background: @grey;
+    color: @white;
+    text-decoration: none;
+    border: 0;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+    padding: 2px 4px;
+    -webkit-transition: all .2s linear;
+}
+
+.respect li a:hover {
+    background: #b49993;
+}
+
+.flickr, .readernaut, .respect {
+    float: left;
+}
+
+.flickr {
+    width: 150px;
+    margin-left: 20px;
+}
+
+.flickr img,
+.readernaut img {
+    background: @offwhite;
+    padding: 2px;
+    border: 1px solid @grey;
+}
+
+.readernaut {
+    width: 150px;
+    margin-right: 20px;
+}
+
+#disqus_thread {
+    font-family: @serifd;
+}
+
+.dsq-comment {
+    padding: 4px 5px 1px 5px !important;
+    margin-bottom: 10px !important;
+}
+
+.dsq-even {
+    background: rgba(255, 255, 255, 0.2) !important;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+
+.dsq-odd {
+    background: rgba(167, 113, 103, 0.2) !important;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+
+.dsq-comment-header {
+    background: rgba(73, 107, 142, 0.2) !important;
 }

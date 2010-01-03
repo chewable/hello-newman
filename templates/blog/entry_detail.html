@@ -21,25 +21,19 @@
             {% endif %}
             In Journal -- {% for blog in entry.blog.all %}{{ blog.title }}{% endfor %}
         </div>
+        <div class="related">
+            <h3>Related Entries</h3>
+            {% for related in entry.related_content.all %}
+                <a href="{{ related.get_absolute_url }}">{{ related.title }}</a>
+            {% empty %}
+                No related entries.
+            {% endfor %}
+        </div>
         <div class="entry-body">
             {{ entry.excerpt|apply_markup:entry.markup }}
             {{ entry.body|apply_markup:entry.markup }}
         </div>
-
-        <div class="related">
-
-        </div>
     </article>
-
-    <section class="related">
-        <h2>Related Entries</h2>
-        {% for related in entry.related_content.all %}
-            <h3><a href="{{ related.get_absolute_url }}">{{ related.title }}</a></h3>
-                <span>{{ related.excerpt|apply_markup:entry.markup|truncatewords:15 }}</span>
-        {% empty %}
-            No related entries.
-        {% endfor %}
-    </section>
 
     <section class="entry-disqus">
         <h2>Comments</h2>
