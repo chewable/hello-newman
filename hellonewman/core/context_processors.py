@@ -8,5 +8,9 @@ def site_name(request):
     return {'site_name': getattr(settings, 'SITE_NAME', '')}
 
 def journals(request):
+    if 'blog_filter' in request.session:
+        j = request.session['blog_filter']
+    else:
+        j = 'mixed'
     journals = Blog.objects.all()
-    return {'journals': journals}
+    return {'journals': journals, 'j': j}
