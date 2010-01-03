@@ -53,7 +53,9 @@ header {
     margin-top: 17px;
 }
 
-header h1 {
+header h1 a {
+    color: @grey;
+    text-decoration: none;
     font-family: @heading;
     font-size: 17pt;
     margin: 0;
@@ -103,7 +105,6 @@ footer h3 {
     width: 470px;
     padding: 20px 15px 50px 15px;
     background: url(../images/footer_border.png) no-repeat bottom left;
-    border-top: 10px solid rgba(0, 0, 0, 0.5);
 }
 
 .content h2 {
@@ -137,6 +138,10 @@ article {
     position: relative;
 }
 
+article h3 {
+    font-family: @headingbold;
+}
+
 article img {
     border: 2px solid @black;
 }
@@ -155,6 +160,15 @@ article .entry-meta {
     background: url(../images/meta_block.png) no-repeat bottom left;
 }
 
+article .entry-meta span {
+    display: block;
+    font-size: 10px;
+}
+
+article .entry-meta a {
+    color: @grey;
+}
+
 article .related {
     border: 0;
 	-webkit-border-top-right-radius: 4px;
@@ -164,7 +178,7 @@ article .related {
     width: 170px;
     left: 485px;
     top: 200px;
-    padding: 3px 0 15px 10px;
+    padding: 3px 5px 15px 10px;
     background: url(../images/related_block.png) no-repeat bottom right;
     color: @offwhite;
     font-family: @serifd;
@@ -172,11 +186,15 @@ article .related {
 
 article .related h3 {
     font-family: @heading;
+    margin-bottom: 3px;
 }
 
 article .related a {
-    color: @offwhite;
+    color: @white;
+    font-size: 9pt;
+    text-decoration: none;
     display: block;
+    margin-bottom: 5px;
 }
 
 article .entry-extra {
@@ -204,6 +222,19 @@ article .entry-extra a {
     text-decoration: none;
 }
 
+article code {
+    font-family: courier, sans-serif;
+    font-size: 10px;
+}
+
+.gist {
+    border: 1px solid @grey;
+}
+
+.gist-file {
+    font-size: 11px;
+}
+
 nav {
     margin: 33px 0 0 0;
     padding: 0;
@@ -216,15 +247,26 @@ nav li {
     margin: 0;
 }
 
+nav li.active {
+    font-family: @headingbold;
+    letter-spacing: -0.5px;
+}
+
 nav li a {
     color: @grey;
     text-decoration: none;
+    -webkit-transition: all .2s linear;
+}
+
+nav li a:hover {
+    color: @white;
 }
 
 nav li.filter {
     color: @grey;
-    margin-top: 19px;
-    font-family: @headingbold;
+    margin: 19px 0 5px 0;
+    font-family: @heading;
+    border-bottom: 1px solid #999;
 }
 
 nav li.home {
@@ -303,4 +345,17 @@ nav li.home {
 
 .dsq-comment-header {
     background: rgba(73, 107, 142, 0.2) !important;
+}
+
+.padtop {
+    margin-top: 10px;
+}
+
+.distractblock h4 a {
+    color: @grey;
+    font-family: @heading;
+}
+
+.distractblock {
+    margin-bottom: 19px;
 }

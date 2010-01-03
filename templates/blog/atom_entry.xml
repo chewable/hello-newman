@@ -3,23 +3,23 @@
     <title>{{ entry.title }}</title>
     <link rel="alternate" type="text/html" href="http://{{ current_site.domain }}{{ entry.get_absolute_url }}"/>
     
-    <updated>{{ entry.updated|date:"Y-m-d\TH:i:s\Z" }}</updated>
-    <published>{{ entry.published|date:"Y-m-d\TH:i:s\Z" }}</published>
+    <updated>{{ entry.updated_on|date:"Y-m-d\TH:i:s\Z" }}</updated>
+    <published>{{ entry.created_on|date:"Y-m-d\TH:i:s\Z" }}</published>
     
     <author>
-         <name>{{ entry.author.get_full_name }}</name>
+         <name>Greg Newman</name>
     </author>
     
     <summary type="xhtml">
         <div xmlns="http://www.w3.org/1999/xhtml">
-            {{ entry.teaser_html|safe }}
+            {{ entry.body|safe }}
         </div>
     </summary>
     
     <content type="xhtml" xml:lang="en">
         <div xmlns="http://www.w3.org/1999/xhtml">
-            {{ entry.teaser_html|safe }}
-            {{ entry.content_html|safe }}
+            {{ entry.body|safe }}
+            {{ entry.body|safe }}
         </div>
     </content>
 </entry>

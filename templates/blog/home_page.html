@@ -6,13 +6,13 @@
 {% load disqus_tags %}
 
 {% block content %}
-
+    {% if entries %}
     {% for entry in entries %}
     <article>
         <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
         <div class="entry-meta">
             On {{ entry.created_on|date:"M. jS, Y" }}
-            <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
+            <span><a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a></span>
             {% disqus_num_replies %}
         </div>
         <div class="entry-body">
@@ -20,6 +20,10 @@
         </div>
     </article>
     {% endfor %}
+    {% else %}
+        <h2>WHOOPS!</h2>
+        <p>Currently there are no entries in that Journal.  Please check back or use the filters to the right to choose another journal.</p>
+    {% endif %}
 
     <section class="sidebar">
         <h2>Distractions</h2>

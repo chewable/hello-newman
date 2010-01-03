@@ -32,10 +32,18 @@
                     <li><a href="http://jtauber.com/">James Tauber</a></li>
                     <li><a href="http://jannisleidel.com/">Jannis Leidel</a></li>
                     <li><a href="http://oebfare.com/">Brian Rosner</a></li>
+                    <li><a href="http://martyalchin.com/">Marty Alchin</a></li>
                     <li><a href="http://www.davemcnally.net/">Dave McNally</a></li>
                     <li><a href="http://www.vonglitschka.com/">Von Glitschka</a></li>
                     <li><a href="http://georgecoghill.com/">George Coghill</a></li>
                     <li><a href="http://rohdesign.com">Mike Rohde</a></li>
+                </ul>
+                <h3 class="padtop">Elsewhere</h3>
+                <ul>
+                    <li><a href="http://twitter.com/gregnewman">twitter</a></li>
+                    <li><a href="http://www.linkedin.com/in/gregnewman">linkedin</a></li>
+                    <li><a href="http://djangopeople.net/20seven/">django people</a></li>
+                    <li><a href="http://www.flickr.com/photos/busyashell/">flickr</a></li>
                 </ul>
             </div>
             
@@ -44,7 +52,7 @@
     </footer>
 
     <section class="copyright">
-        <p>&copy;2009 Greg Newman, All Rights Reserved.<br />Content, site design, images and illustrations may not be reproduced without written permission from author.</p>
+        <p>&copy;2010 Greg Newman, All Rights Reserved.<br />Content, site design, images and illustrations may not be reproduced without written permission from author.</p>
         <p>This site was hand-crafted with <a href="http://python.org">Python</a>, <a href="http://djangoproject.com">Django</a> & <a href="http://github.com/gregnewman/hello-newman">hello!newman</a> on a Mac.</p>
     </section>
 
@@ -59,7 +67,7 @@
 
             <li class="filter">filter journals</li>
             {% for journal in journals %}
-            <li><a href="{% url filter-blog slug=journal.slug %}">{{ journal.title }}</a></li>
+            <li{% ifequal j journal.slug %} class="active"{% endifequal %}><a href="{% url filter-blog slug=journal.slug %}">{{ journal.title }}</a></li>
             {% endfor %}
             <li><a href="{% url filter-blog %}">Mix It Up</a></li>
         </ul>

@@ -8,18 +8,18 @@
     <article>
         <h2>{{ entry.title }}</h2>
         <div class="entry-meta">
-            <span>On {{ entry.created_on|date:"M. jS, y" }}</span>
+            On {{ entry.created_on|date:"M. jS, y" }}
         </div>
         <div class="entry-extra">
             <span><a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a></span>
             {% tags_for_object entry as tags %}
             {% if tags %}
-               <span>Tagged: 
+               <span>Tagged<br /> 
             {% for tag in tags %}
                <a href="{% url tagged-entries tag %}">{{ tag }}</a> 
             {% endfor %}</span>
             {% endif %}
-            In Journal -- {% for blog in entry.blog.all %}{{ blog.title }}{% endfor %}
+            In Journal - {% for blog in entry.blog.all %}{{ blog.title }}{% endfor %}
         </div>
         <div class="related">
             <h3>Related Entries</h3>
