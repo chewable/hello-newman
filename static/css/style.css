@@ -15,8 +15,9 @@ body {
   line-height: 19px;
   padding: 0;
   position: relative;
-  background: url(../images/page_bg.gif) no-repeat fixed;
+  background: #acacac url(../images/page_bg.jpg) no-repeat fixed;
 }
+a { color: #2a4560; }
 .column1 {
   width: 260px;
   text-align: right;
@@ -254,3 +255,5 @@ nav li.home {
   font-family: 'GraublauWeb', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .distractblock { margin-bottom: 19px; }
+a.continue { color: #2a4560; }
+a.continue:hover { color: #000000; }
