@@ -16,7 +16,7 @@
             {% disqus_num_replies %}
         </div>
         <div class="entry-body">
-            {{ entry.body|apply_markup:entry.markup|truncatewords:60 }}
+            {{ entry.body|apply_markup:entry.markup|truncatewords:60 }} <a href="{{ entry.get_absolute_url }}" class="continue">Continue Reading</a>
         </div>
     </article>
     {% endfor %}
