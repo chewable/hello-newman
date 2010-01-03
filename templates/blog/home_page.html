@@ -3,6 +3,7 @@
 {% load tagging_tags %}
 {% load markup_tags %}
 {% load comparison %}
+{% load disqus_tags %}
 
 {% block content %}
 
@@ -10,7 +11,9 @@
     <article>
         <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
         <div class="entry-meta">
-            On {{ entry.created_on|date:"F jS, Y" }}
+            On {{ entry.created_on|date:"M. jS, Y" }}
+            <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
+            {% disqus_num_replies %}
         </div>
         <div class="entry-body">
             {{ entry.body|apply_markup:entry.markup|truncatewords:60 }}

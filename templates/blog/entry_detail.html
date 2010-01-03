@@ -2,21 +2,22 @@
 {% load markup %}
 {% load tagging_tags %}
 {% load markup_tags %}
+{% load disqus_tags %}
 
 {% block content %}
     <article>
         <h2>{{ entry.title }}</h2>
         <div class="entry-meta">
-            <span>On {{ entry.created_on|date:"F jS, y" }}</span>
-            <a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a>
+            <span>On {{ entry.created_on|date:"M. jS, y" }}</span>
+        </div>
+        <div class="entry-extra">
+            <span><a href="{{ entry.get_absolute_url }}#disqus_thread">View Comments</a></span>
             {% tags_for_object entry as tags %}
             {% if tags %}
-            <ul>
-               <li>Tagged: </li>
+               <span>Tagged: 
             {% for tag in tags %}
-               <li><a href="{% url tagged-entries tag %}">{{ tag }}</a></li>
-            {% endfor %}
-            </ul>
+               <a href="{% url tagged-entries tag %}">{{ tag }}</a> 
+            {% endfor %}</span>
             {% endif %}
             In Journal -- {% for blog in entry.blog.all %}{{ blog.title }}{% endfor %}
         </div>
@@ -30,12 +31,7 @@
         </div>
     </article>
 
-    <section class="entry-disqus">
-        <h2>Comments</h2>
-
-    </section>
-
-    <section class="sidebar">
+    <section class="related">
         <h2>Related Entries</h2>
         {% for related in entry.related_content.all %}
             <h3><a href="{{ related.get_absolute_url }}">{{ related.title }}</a></h3>
@@ -43,6 +39,12 @@
         {% empty %}
             No related entries.
         {% endfor %}
+    </section>
+
+    <section class="entry-disqus">
+        <h2>Comments</h2>
+        <a name="disqus_thread"></a>
+        {% disqus_show_comments %}
     </section>
     <div class="clearfix"></div>
 {% endblock %}
