@@ -155,15 +155,15 @@ def blog_feed(request, slug=None):
 
     if slug is None:
         blog_title = "combined"
+        entries = Entry.objects.all()[:20]
     else:
+        try:
+            entries = Entry.objects.filter(blog__slug=slug)
+        except InvalidBlog:
+            raise Http404()
         blog = get_object_or_404(Blog, slug=slug)
         blog_title = blog.title
     
-    try:
-        entries = Entry.objects.filter(blog__slug=slug)
-    except InvalidBlog:
-        raise Http404()
-        
     feed_title = "Greg Newman: %s" % (blog_title)
     
     current_site = Site.objects.get_current()
