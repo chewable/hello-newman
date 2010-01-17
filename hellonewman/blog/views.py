@@ -45,11 +45,11 @@ def home_page(request):
     """
     
     if 'blog_filter' in request.session:
-        entries = Entry.objects.filter(blog__slug=request.session['blog_filter'])
+        entries = Entry.objects.filter(blog__slug=request.session['blog_filter'], published=True)
     else:
-        entries = Entry.objects.all()[:9]
+        entries = Entry.objects.published()[:9]
                                  
-    distractions = Distraction.objects.all()[:5]
+    distractions = Distraction.objects.published()[:5]
     
     return render_to_response('blog/home_page.html', {
         "entries": entries,
@@ -87,7 +87,7 @@ def category_entries(request, slug):
     """
     returns all posts for a given category
     """
-    entries = Entry.objects.filter(category__slug=slug)
+    entries = Entry.objects.filter(category__slug=slug, published=True)
 
     return render_to_response("blog/category_entries.html", {
         "entries": entries,
@@ -155,10 +155,10 @@ def blog_feed(request, slug=None):
 
     if slug is None:
         blog_title = "combined"
-        entries = Entry.objects.all()[:20]
+        entries = Entry.objects.published()[:20]
     else:
         try:
-            entries = Entry.objects.filter(blog__slug=slug)
+            entries = Entry.objects.filter(blog__slug=slug, published=True)
         except InvalidBlog:
             raise Http404()
         blog = get_object_or_404(Blog, slug=slug)

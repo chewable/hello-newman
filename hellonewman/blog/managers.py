@@ -3,7 +3,7 @@ from django.db import models
 class BlogManager(models.Manager):
     
     def published(self):
-        return self.exclude(published=None)
+        return self.exclude(published=False)
     
     def current(self):
         return self.published().order_by("-title")
@@ -11,7 +11,7 @@ class BlogManager(models.Manager):
 class EntryManager(models.Manager):
     
     def published(self):
-        return self.exclude(published=None)
+        return self.exclude(published=False)
     
     def current(self):
         return self.published().order_by("-created_on")
@@ -20,7 +20,7 @@ class EntryManager(models.Manager):
 class DistractionManager(models.Manager):
     
     def published(self):
-        return self.exclude(published=None)
+        return self.exclude(published=False)
     
     def current(self):
         return self.published().order_by("-created_on")
