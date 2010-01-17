@@ -22,6 +22,10 @@ urlpatterns = patterns('',
         view = 'hellonewman.blog.views.blog_feed',
         name="blog-feed"
     ),
+    url(r'^preview/(?P<slug>[-\w]+)/$',
+        view = 'hellonewman.blog.views.preview',
+        name = 'entry-detail'
+    ),
     url(r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/(?P<slug>[-\w]+)/$',
         view = 'hellonewman.blog.views.entry_detail',
         name = 'entry-detail'

@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
@@ -14,6 +15,18 @@ from tagging.models import Tag, TaggedItem
 
 from hellonewman.blog.models import Entry, Distraction, Blog, FeedHit
 from hellonewman.blog.exceptions import InvalidBlog
+
+@login_required
+def preview(request, slug):
+    """
+    preview view for writing articles
+    expects the user to be logged in to view the article
+    """
+    entry = get_object_or_404(Entry, slug=slug)
+
+    return render_to_response("blog/entry_detail.html", {
+        "entry": entry,
+    }, context_instance=RequestContext(request))
 
 def filter_blog(request, slug=None):
     """
