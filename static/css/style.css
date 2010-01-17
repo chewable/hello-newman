@@ -256,5 +256,12 @@ nav li.home {
   font-family: 'GraublauWeb', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .distractblock { margin-bottom: 19px; }
-a.continue { color: #2a4560; }
+a.continue {
+  color: #2a4560;
+  font-family: 'GraublauWeb', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+  float: right;
+}
 a.continue:hover { color: #000000; }
