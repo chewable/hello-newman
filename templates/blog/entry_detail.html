@@ -21,7 +21,7 @@
                <a href="{% url tagged-entries tag %}">{{ tag }}</a> 
             {% endfor %}</span>
             {% endif %}
-            In Journal - {% for blog in entry.blog.all %}{{ blog.title }}{% endfor %}
+            In Journal - {% for blog in entry.blog.all %}{{ blog.title }} {% endfor %}
         </div>
         <div class="related">
             <h3>Related Entries</h3>

@@ -1,7 +1,8 @@
 {% extends "site_base.html" %}
 
 {% block content %}
+    <h2>Entries matching tag "{{ tag.name }}"</h2>
     {% for entry in entries %}
-        {{ entry.title }}<br />
+        {{ entry.created_on|date:"M. jS, y" }}: <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a><br />
     {% endfor %}
 {% endblock %}

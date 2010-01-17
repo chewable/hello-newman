@@ -81,6 +81,7 @@ def tagged_entries(request, tag):
 
     return render_to_response("blog/tag_list.html", {
         "entries": entries,
+        "tag": tag,
     }, context_instance=RequestContext(request))
 
 def category_entries(request, slug):
