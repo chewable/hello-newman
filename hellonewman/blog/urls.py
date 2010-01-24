@@ -14,6 +14,10 @@ urlpatterns = patterns('',
         view = 'hellonewman.blog.views.tagged_entries',
         name = 'tagged-entries'
     ),
+    url(r'^feed/category/(?P<slug>[-\w]+)/$',
+        view = 'hellonewman.blog.views.category_feed',
+        name = "category-feed"
+    ),
     url(r'^feed/$',
         view = 'hellonewman.blog.views.blog_feed',
         name="blog-feed-combined"

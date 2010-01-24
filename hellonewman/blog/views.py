@@ -13,7 +13,7 @@ from django.utils import simplejson as json
 from django.contrib.sites.models import Site
 from tagging.models import Tag, TaggedItem
 
-from hellonewman.blog.models import Entry, Distraction, Blog, FeedHit
+from hellonewman.blog.models import Entry, Distraction, Blog, FeedHit, Category
 from hellonewman.blog.exceptions import InvalidBlog
 
 @login_required
@@ -189,6 +189,52 @@ def blog_feed(request, slug=None):
     else:
         url_name = "blog-feed"
         kwargs = {"slug": blog.slug}
+    feed_url = "http://%s%s" % (current_site.domain, reverse(url_name, kwargs=kwargs))
+
+    if entries:
+        feed_updated = entries[0].created_on
+    else:
+        feed_updated = datetime.now()
+    
+    # create a feed hit
+    hit = FeedHit()
+    hit.request_data = serialize_request(request)
+    hit.save()
+    
+    atom = render_to_string("blog/atom_feed.xml", {
+        "feed_id": feed_url,
+        "feed_title": feed_title,
+        "blog_url": blog_url,
+        "feed_url": feed_url,
+        "feed_updated": feed_updated,
+        "entries": entries,
+        "current_site": current_site,
+    })
+    return HttpResponse(atom, mimetype="application/atom+xml")
+
+def category_feed(request, slug=None):
+    """
+    Atom Feeds.  Borrowed and modified from
+    http://github.com/eldarion/biblion
+    """
+
+    if slug is None:
+        blog_title = "category"
+        entries = Entry.objects.published()[:20]
+    else:
+        try:
+            entries = Entry.objects.filter(category__slug=slug, published=True)
+        except InvalidBlog:
+            raise Http404()
+        category = get_object_or_404(Category, slug=slug)
+    
+    feed_title = "Greg Newman: %s" % (category.title)
+    
+    current_site = Site.objects.get_current()
+    blog_url = "http://%s%s" % (current_site.domain, reverse("home-page"))
+    
+    url_name = "category-feed"
+    kwargs = {"slug": category.slug}
     feed_url = "http://%s%s" % (current_site.domain, reverse(url_name, kwargs=kwargs))
 
     if entries:
