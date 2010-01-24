@@ -265,3 +265,13 @@ a.continue {
   float: right;
 }
 a.continue:hover { color: #000000; }
+pre {
+  width: 445px;
+  overflow: auto;
+  padding: 0 10px;
+  border: 2px solid #e1e1e1;
+  background: rgba(0, 0, 0, 0.4);
+  -webkit-transition: all 0.2s linear;
+  color: #ffffff;
+}
+pre:hover { background: rgba(0, 0, 0, 0.5); }
